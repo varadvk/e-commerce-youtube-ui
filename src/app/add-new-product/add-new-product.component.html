@@ -1,0 +1,62 @@
+<div class="container mt-5">
+    <div class="card p-2">
+
+        <div class="row">
+            <div class="col-6">
+
+                <form #productForm="ngForm" (ngSubmit)="addProduct(productForm)">
+
+                    <mat-form-field appearance="outline"
+                                    class="w-100">
+                        <mat-label>Product Name</mat-label>
+                        <input matInput
+                               placeholder="Product Name"
+                               [(ngModel)]="product.productName"
+                               name="productName">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline"
+                                    class="w-100">
+                        <mat-label>Product Description</mat-label>
+                        <input matInput
+                               placeholder="Product Description"
+                               [(ngModel)]="product.productDescription"
+                               name="productDescription"
+                               >
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline"
+                                    class="w-100">
+                        <mat-label>Product Actual Price</mat-label>
+                        <input matInput
+                               placeholder="Product Actual Price"
+                               [(ngModel)]="product.productActualPrice"
+                               name="productActualPrice">
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline"
+                                    class="w-100">
+                        <mat-label>Product Discounted Price</mat-label>
+                        <input matInput
+                               placeholder="Product Discounted Price"
+                               [(ngModel)]="product.productDiscountedPrice"
+                               name="productDiscountedPrice">
+                    </mat-form-field>
+
+                    <div align="end">
+                        <button mat-stroked-button
+                                color="primary" style="margin-right: 3px;">Clear</button>
+                        <button type="submit" mat-stroked-button
+                                color="primary">Add Product</button>
+                    </div>
+
+                </form>
+
+            </div>
+            <div class="col-6">
+                Image area
+            </div>
+        </div>
+
+    </div>
+</div>
