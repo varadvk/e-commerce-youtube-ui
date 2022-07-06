@@ -9,7 +9,7 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient) { }
 
-  public addProduct(product: Product) {
+  public addProduct(product: FormData) {
     return this.httpClient.post<Product>("http://localhost:9090/addNewProduct", product);
   }
 }

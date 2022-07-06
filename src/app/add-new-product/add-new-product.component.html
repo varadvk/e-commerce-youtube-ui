@@ -54,7 +54,11 @@
 
             </div>
             <div class="col-6">
-                Image area
+                <input multiple
+                       type="file"
+                       #selectFile
+                       value="select"
+                       (change)="onFileSelected($event)">
             </div>
         </div>
 
