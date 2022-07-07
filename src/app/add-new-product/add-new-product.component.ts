@@ -69,4 +69,8 @@ export class AddNewProductComponent implements OnInit {
     }
   }
 
+  removeImages(i: number) {
+    this.product.productImages.splice(i, 1);
+  }
+
 }

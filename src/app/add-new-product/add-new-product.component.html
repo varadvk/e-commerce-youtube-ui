@@ -54,11 +54,25 @@
 
             </div>
             <div class="col-6">
-                <input multiple
-                       type="file"
-                       #selectFile
-                       value="select"
-                       (change)="onFileSelected($event)">
+                <div>
+                    <input multiple
+                    type="file"
+                    #selectFile
+                    value="select"
+                    (change)="onFileSelected($event)">
+                </div>
+                <div class="mt-5">
+                    <div class="row">
+                        <mat-grid-list cols="4" rowHeight="1:1">
+                            <mat-grid-tile *ngFor="let file of product.productImages; let i = index;">
+                                <div style="position: relative">
+                                   <span class="btn-remove-image" (click)="removeImages(i)">x</span>
+                                    <img [src]="file.url" width="100px" height="100px">
+                                </div>
+                            </mat-grid-tile>
+                        </mat-grid-list>
+                    </div>
+                </div>
             </div>
         </div>
 
