@@ -5,6 +5,7 @@ import { AdminComponent } from './admin/admin.component';
 import { ForbiddenComponent } from './forbidden/forbidden.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { ProductResolveService } from './product-resolve.service';
 import { ShowProductDetailsComponent } from './show-product-details/show-product-details.component';
 import { UserComponent } from './user/user.component';
 import { AuthGuard } from './_auth/auth.guard';
@@ -15,7 +16,11 @@ const routes: Routes = [
   { path: 'user', component: UserComponent ,  canActivate:[AuthGuard], data:{roles:['User']} },
   { path: 'login', component: LoginComponent },
   { path: 'forbidden', component: ForbiddenComponent },
-  { path: 'addNewProduct', component: AddNewProductComponent, canActivate:[AuthGuard], data: {roles:['Admin']}},
+  { path: 'addNewProduct', component: AddNewProductComponent, canActivate:[AuthGuard], data: {roles:['Admin']},
+    resolve: {
+      product: ProductResolveService
+    }
+  },
   { path: 'showProductDetails', component: ShowProductDetailsComponent}
 ];
 
