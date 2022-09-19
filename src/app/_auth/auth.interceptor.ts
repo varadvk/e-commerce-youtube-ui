@@ -26,8 +26,10 @@ export class AuthInterceptor implements HttpInterceptor {
 
     const token = this.userAuthService.getToken();
 
-    req = this.addToken(req, token);
-
+    if(token) {
+      req = this.addToken(req, token);
+    }
+    
     return next.handle(req).pipe(
         catchError(
             (err:HttpErrorResponse) => {
