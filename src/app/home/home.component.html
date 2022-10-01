@@ -15,7 +15,7 @@
               <b>Rs. {{p.productDiscountedPrice}}</b> &nbsp;  <b style="text-decoration: line-through;">{{p.productActualPrice}}</b>
             </div>
             <div class="mt-2">
-               <button type="button" mat-raised-button color="warn">View Details</button>
+               <button type="button" mat-raised-button color="warn" (click)="showProductDetails(p.productId)">View Details</button>
             </div>
          </div>
       </mat-grid-tile>
