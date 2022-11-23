@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OrderDetails } from '../_model/order-details.model';
 import { Product } from '../_model/product.model';
 import { ProductService } from '../_services/product.service';
@@ -23,7 +23,8 @@ export class BuyProductComponent implements OnInit {
   }
 
   constructor(private activatedRoute: ActivatedRoute,
-    private productService: ProductService) { }
+    private productService: ProductService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.productDetails = this.activatedRoute.snapshot.data['productDetails'];
@@ -43,6 +44,7 @@ export class BuyProductComponent implements OnInit {
       (resp) => {
         console.log(resp);
         orderForm.reset();
+        this.router.navigate(["/orderConfirm"]);
       },
       (err) => {
         console.log(err);
