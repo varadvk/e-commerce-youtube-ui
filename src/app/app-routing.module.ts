@@ -10,6 +10,7 @@ import { LoginComponent } from "./login/login.component";
 import { OrderConfirmationComponent } from "./order-confirmation/order-confirmation.component";
 import { ProductResolveService } from "./product-resolve.service";
 import { ProductViewDetailsComponent } from "./product-view-details/product-view-details.component";
+import { RegisterComponent } from "./register/register.component";
 import { ShowProductDetailsComponent } from "./show-product-details/show-product-details.component";
 import { UserComponent } from "./user/user.component";
 import { AuthGuard } from "./_auth/auth.guard";
@@ -64,6 +65,10 @@ const routes: Routes = [
     component: OrderConfirmationComponent,
     canActivate: [AuthGuard],
     data: { roles: ["User"] }
+  },
+  {
+    path: "register",
+    component: RegisterComponent
   }
 ];
 
