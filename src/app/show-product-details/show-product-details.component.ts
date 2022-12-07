@@ -15,6 +15,9 @@ import { ProductService } from '../_services/product.service';
 })
 export class ShowProductDetailsComponent implements OnInit {
 
+  showLoadMoreProductButton = false;
+  showTable = false;
+  pageNumber: number = 0;
   productDetails: Product[] = [];
   displayedColumns: string[] = ['Id', 'Product Name', 'description', 'Product Discounted Price', 'Product Actual Price', 'Actions'];
 
@@ -28,18 +31,34 @@ export class ShowProductDetailsComponent implements OnInit {
   }
 
   public getAllProducts() {
-    this.productService.getAllProducts()
+    this.showTable = false;
+    this.productService.getAllProducts(this.pageNumber)
     .pipe(
       map((x: Product[], i) => x.map((product: Product) => this.imageProcessingService.createImages(product)))
     )
     .subscribe(
       (resp: Product[]) => {
-        console.log(resp);
-        this.productDetails = resp;
+        // console.log(resp);
+        resp.forEach(product => this.productDetails.push(product));
+        console.log('msg', this.productDetails);
+        this.showTable = true;
+
+        if(resp.length == 12) {
+          this.showLoadMoreProductButton = true;
+        } else {
+          this.showLoadMoreProductButton = false;
+        }
+
+        // this.productDetails = resp;
       }, (error: HttpErrorResponse) => {
         console.log(error);
       }
     );
+  }
+
+  loadMoreProduct() {
+    this.pageNumber = this.pageNumber + 1;
+    this.getAllProducts();
   }
 
   deleteProduct(productId) {

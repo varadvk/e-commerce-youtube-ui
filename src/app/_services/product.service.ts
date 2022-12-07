@@ -14,8 +14,8 @@ export class ProductService {
     return this.httpClient.post<Product>("http://localhost:9090/addNewProduct", product);
   }
 
-  public getAllProducts() {
-    return this.httpClient.get<Product[]>("http://localhost:9090/getAllProducts");
+  public getAllProducts(pageNumber) {
+    return this.httpClient.get<Product[]>("http://localhost:9090/getAllProducts?pageNumber="+pageNumber);
   }
 
   public getProductDetailsById(productId) {

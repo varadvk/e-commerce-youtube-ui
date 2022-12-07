@@ -1,5 +1,7 @@
 <div class="mt-5 p-3">
 
+<div *ngIf="showTable">
+
 
 <table mat-table [dataSource]="productDetails" class="mat-elevation-z8">
   
@@ -50,5 +52,11 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
   </table>
-  
+
+</div>
+
+<div class="text-center p-5" *ngIf="showLoadMoreProductButton">
+  <button type="button" mat-raised-button color="primary" (click)="loadMoreProduct()">Load more</button>
+</div>
+
 </div>
