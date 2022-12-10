@@ -14,13 +14,8 @@ export class ProductService {
     return this.httpClient.post<Product>("http://localhost:9090/addNewProduct", product);
   }
 
-  public getAllProducts(pageNumber, searchKey: string = "") {
-    if(searchKey === "") {
-      return this.httpClient.get<Product[]>("http://localhost:9090/getAllProducts?pageNumber="+pageNumber);
-    } else {
-      return this.httpClient.get<Product[]>("http://localhost:9090/getAllProducts?pageNumber="+pageNumber+"&searchKey="+searchKey);
-    }
-    
+  public getAllProducts(pageNumber) {
+    return this.httpClient.get<Product[]>("http://localhost:9090/getAllProducts?pageNumber="+pageNumber);
   }
 
   public getProductDetailsById(productId) {
