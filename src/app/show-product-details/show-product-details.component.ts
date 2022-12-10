@@ -38,7 +38,6 @@ export class ShowProductDetailsComponent implements OnInit {
     )
     .subscribe(
       (resp: Product[]) => {
-        // console.log(resp);
         resp.forEach(product => this.productDetails.push(product));
         console.log('msg', this.productDetails);
         this.showTable = true;
@@ -48,8 +47,6 @@ export class ShowProductDetailsComponent implements OnInit {
         } else {
           this.showLoadMoreProductButton = false;
         }
-
-        // this.productDetails = resp;
       }, (error: HttpErrorResponse) => {
         console.log(error);
       }

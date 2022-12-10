@@ -27,20 +27,30 @@ export class HomeComponent implements OnInit {
     this.getAllProducts();
   }
 
-  public getAllProducts() {
-    this.productService.getAllProducts(this.pageNumber)
+  searchProduct(searchKey) {
+    this.getAllProducts(searchKey);
+  }
+
+  public getAllProducts(searchKey: string = "") {
+    this.productService.getAllProducts(this.pageNumber, searchKey)
     .pipe(
       map((x: Product[], i) => x.map((product: Product) => this.imageProcessingService.createImages(product)))
     )
     .subscribe(
       (resp: Product[]) => {
-        console.log(resp);
         if(resp.length == 12) {
           this.showLoadButton = true;
         } else {
           this.showLoadButton = false;
         }
-        resp.forEach(p => this.productDetails.push(p));
+
+        if(searchKey === "") {
+          this.productDetails = [];
+          resp.forEach(p => this.productDetails.push(p));
+        } else {
+          this.productDetails = resp;
+        }
+        
       }, (error: HttpErrorResponse) => {
         console.log(error);
       }
