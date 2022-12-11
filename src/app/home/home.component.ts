@@ -27,8 +27,15 @@ export class HomeComponent implements OnInit {
     this.getAllProducts();
   }
 
-  public getAllProducts() {
-    this.productService.getAllProducts(this.pageNumber)
+  searchByKeyword(searchkeyword) {
+    console.log(searchkeyword);
+    this.pageNumber = 0;
+    this.productDetails = [];
+    this.getAllProducts(searchkeyword);
+  }
+
+  public getAllProducts(searchKey: string = "") {
+    this.productService.getAllProducts(this.pageNumber, searchKey)
     .pipe(
       map((x: Product[], i) => x.map((product: Product) => this.imageProcessingService.createImages(product)))
     )
