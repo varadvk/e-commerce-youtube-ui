@@ -11,8 +11,12 @@ import { ProductService } from './_services/product.service';
 })
 export class BuyProductResolverService implements Resolve<Product[]>{
 
+  // let isSingleProductCheckout = false;
+
   constructor(private productServcice: ProductService,
-    private imageProcessingService: ImageProcessingService) { }
+    private imageProcessingService: ImageProcessingService) { 
+
+    }
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Product[] | Observable<Product[]> | Promise<Product[]> {
     
