@@ -9,7 +9,7 @@ import { ProductService } from '../_services/product.service';
 })
 export class CartComponent implements OnInit {
 
-  displayedColumns: string[] = ['Name', 'Description', 'Price', 'Discounted Price'];
+  displayedColumns: string[] = ['Name', 'Description', 'Price', 'Discounted Price', 'Action'];
 
   cartDetails: any[] = [];
 
@@ -18,6 +18,18 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCartDetails();
+  }
+
+  delete(cartId) {
+    console.log(cartId);
+    this.productService.deleteCartItem(cartId).subscribe(
+      (resp) => {
+        console.log(resp);
+        this.getCartDetails();
+      }, (err) => {
+        console.log(err);
+      }
+    );
   }
 
   getCartDetails() {

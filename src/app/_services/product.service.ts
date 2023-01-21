@@ -10,6 +10,10 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient) { }
 
+  public deleteCartItem(cartId) {
+    return this.httpClient.delete("http://localhost:9090/deleteCartItem/"+cartId);
+  }
+
   public addProduct(product: FormData) {
     return this.httpClient.post<Product>("http://localhost:9090/addNewProduct", product);
   }
