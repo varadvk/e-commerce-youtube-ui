@@ -8,7 +8,7 @@ import { ProductService } from '../_services/product.service';
 })
 export class OrderDetailsComponent implements OnInit {
 
-  displayedColumns: string[] = ['Id', 'Product Name', 'Name', 'Address', 'Contact No.', 'Status'];
+  displayedColumns: string[] = ['Id', 'Product Name', 'Name', 'Address', 'Contact No.', 'Status', 'Action'];
   dataSource = [];
 
   constructor(private productService: ProductService) { }
@@ -22,6 +22,18 @@ export class OrderDetailsComponent implements OnInit {
       (resp) => {
         this.dataSource = resp;
         console.log(resp);
+      }, (error) => {
+        console.log(error);
+      }
+    );
+  }
+
+  markAsDelivered(orderId) {
+    console.log(orderId);
+    this.productService.markAsDelivered(orderId).subscribe(
+      (response) => {
+        this.getAllOrderDetailsForAdmin();
+        console.log(response);
       }, (error) => {
         console.log(error);
       }

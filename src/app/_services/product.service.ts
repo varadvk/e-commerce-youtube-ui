@@ -12,6 +12,10 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient) { }
 
+  public markAsDelivered(orderId) {
+      return this.httpClient.get("http://localhost:9090/markOrderAsDelivered/"+orderId)
+  }
+
   public getAllOrderDetailsForAdmin(): Observable<MyOrderDetails[]> {
     return this.httpClient.get<MyOrderDetails[]>("http://localhost:9090/getAllOrderDetails");
   }
