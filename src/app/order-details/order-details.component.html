@@ -1,5 +1,11 @@
 <div class="container mt-5">
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <mat-button-toggle-group  aria-label="Font Style">
+    <mat-button-toggle value="All" (click)="getAllOrderDetailsForAdmin('All')">All</mat-button-toggle>
+    <mat-button-toggle value="Placed" (click)="getAllOrderDetailsForAdmin('Placed')">Placed</mat-button-toggle>
+    <mat-button-toggle value="Delivered" (click)="getAllOrderDetailsForAdmin('Delivered')" >Delivered</mat-button-toggle>
+  </mat-button-toggle-group>
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 mt-3">
 
     <ng-container matColumnDef="Id">
       <th mat-header-cell *matHeaderCellDef> Id </th>
