@@ -12,6 +12,10 @@ export class ProductService {
 
   constructor(private httpClient: HttpClient) { }
 
+  public createTransaction(amount) {
+    return this.httpClient.get("http://localhost:9090/createTransaction/"+amount);
+  }
+
   public markAsDelivered(orderId) {
       return this.httpClient.get("http://localhost:9090/markOrderAsDelivered/"+orderId)
   }
